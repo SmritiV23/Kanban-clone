@@ -5,17 +5,17 @@ import Card from './Card';
 const Body = () => {
   const [tasks, setTasks] = useState({
     todo: [
-      { id: '1', title: 'Task 1' },
-      { id: '2', title: 'Task 2' },
-      { id: '3', title: 'Task 3' },
+      { id: '1', title: 'Brainstroming'},
+      { id: '2', title: 'Research' },
+      { id: '3', title: 'Wireframes' },
     ],
     inProgress: [
-      { id: '4', title: 'Task 4' },
-      { id: '5', title: 'Task 5' },
+      { id: '4', title: 'Onboarding Illustration' },
+      { id: '5', title: 'Moodboard' },
     ],
     done: [
-      { id: '6', title: 'Task 6' },
-      { id: '7', title: 'Task 7' },
+      { id: '6', title: 'Mobile App' },
+      { id: '7', title: 'Design System' },
     ],
   });
 
@@ -51,16 +51,17 @@ const Body = () => {
 
   return (
     <DragDropContext onDragEnd={handleDragEnd}>
-      <div className="flex justify-center">
+      <div className="flex justify-around">
         <Droppable droppableId="todo">
           {(provided) => (
             <div
               className="bg-gray-100 p-4 rounded-lg shadow m-4"
-              style={{ width: '300px' }}
+              style={{ width: '350px' }}
               ref={provided.innerRef}
               {...provided.droppableProps}
             >
               <h2 className="text-xl font-semibold mb-4">To Do</h2>
+              <div className=" h-0.5 bg-[#5030E5] my-4"></div>
               {tasks.todo.map((task, index) => (
                 <Draggable key={task.id} draggableId={task.id} index={index}>
                   {(provided) => (
@@ -68,8 +69,9 @@ const Body = () => {
                       ref={provided.innerRef}
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
+                      className='m-2'
                     >
-                      <Card title={task.title} />
+                      <Card title={task.title}  />
                     </div>
                   )}
                 </Draggable>
@@ -82,11 +84,12 @@ const Body = () => {
           {(provided) => (
             <div
               className="bg-gray-100 p-4 rounded-lg shadow m-4"
-              style={{ width: '300px' }}
+              style={{ width: '350px' }}
               ref={provided.innerRef}
               {...provided.droppableProps}
             >
               <h2 className="text-xl font-semibold mb-4">In Progress</h2>
+              <div className=" h-0.5 bg-[#FFA500] my-4"></div>
               {tasks.inProgress.map((task, index) => (
                 <Draggable key={task.id} draggableId={task.id} index={index}>
                   {(provided) => (
@@ -94,6 +97,7 @@ const Body = () => {
                       ref={provided.innerRef}
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
+                      className='m-2'
                     >
                       <Card title={task.title} />
                     </div>
@@ -108,11 +112,12 @@ const Body = () => {
           {(provided) => (
             <div
               className="bg-gray-100 p-4 rounded-lg shadow m-4"
-              style={{ width: '300px' }}
+              style={{ width: '350px' }}
               ref={provided.innerRef}
               {...provided.droppableProps}
             >
               <h2 className="text-xl font-semibold mb-4">Done</h2>
+              <div className=" h-0.5 bg-[#8BC48A] my-4"></div>
               {tasks.done.map((task, index) => (
                 <Draggable key={task.id} draggableId={task.id} index={index}>
                   {(provided) => (
@@ -120,6 +125,7 @@ const Body = () => {
                       ref={provided.innerRef}
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
+                      className='m-2'
                     >
                       <Card title={task.title} />
                     </div>
